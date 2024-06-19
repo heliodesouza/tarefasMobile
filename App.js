@@ -1,22 +1,38 @@
 import React, {useState} from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View,
+   Text,
+    StyleSheet,
+     TouchableOpacity,
+      TextInput
+     } from 'react-native';
+
+import { FontAwesome } from '@expo/vector-icons'
 
 export default function App(){
-  const [nome, setNome] = useState('Fulano')
+  const [tarefa, setTarefa] = useState('');
 
-  function handleMudaNome(){
-    setNome("40TECH")
+  function handleAdd(){
+    alert(tarefa)
   }
-
+ 
+  
 
   return(
     <View style={styles.container}>
+      <Text style={styles.title}>Tarefas</Text>
+      <View style={styles.containerInput}>
+        <TextInput
+          placeholder='Digite uma tarefa'
+          style={styles.input}
+          value={tarefa} 
+          onChangeText={ (text) => setTarefa(text)}
+        />
+        <TouchableOpacity style={styles.buttonAdd} onPress={handleAdd}>
+          <FontAwesome name="plus" size={20} color="#FFF" />
+        </TouchableOpacity>
+      </View>
       
-      <Text>{nome}</Text>
-      <TouchableOpacity style={styles.button} onPress={handleMudaNome}>
-        <Text style={styles.buttonText}>Mudar Nome</Text>
-
-      </TouchableOpacity>
+      
     </View>
 
   )
@@ -26,27 +42,41 @@ export default function App(){
 const styles = StyleSheet.create({
   container:{
     flex:1,
-    backgroundColor: '#f1f1f1',
+    backgroundColor: '#22272e',
     padding: 28,
 
   },
-  title: {
-    fontSize: 32,
-    color: '#121212',
+  title:{
     fontWeight: 'bold',
-    textAlign:'center'
+    fontSize: 24,
+    color: '#FFF',
+    marginTop:'5%',
+    paddingStart: '5%',
+    marginBottom: '12',
   },
-  button:{
-    backgroundColor: 'blue',
-    height: 40,
+  containerInput: {
+    flexDirection: 'row',
+    width: '100%',
+    height: 44,
     alignItems: 'center',
     justifyContent: 'center',
-    margin: 35 
+    marginBottom: 22,
   },
-  buttonText: {
-    color: '#fff',
-    fontWeight: 'bold'
-
+  input: {
+    width: '75%',
+    backgroundColor: '#FBFBFB',
+    height: 44,
+    borderRadius: 4,
+    paddingHorizontal: 8,
+  },
+  buttonAdd: {
+    width: '15%',
+    height: 44,
+    backgroundColor: '#73f7ff',
+    marginLeft: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 4,
   }
+ 
 })
-
