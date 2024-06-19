@@ -1,20 +1,52 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-export default function App() {
-  return (
+export default function App(){
+  const [nome, setNome] = useState('Fulano')
+
+  function handleMudaNome(){
+    setNome("40TECH")
+  }
+
+
+  return(
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      
+      <Text>{nome}</Text>
+      <TouchableOpacity style={styles.button} onPress={handleMudaNome}>
+        <Text style={styles.buttonText}>Mudar Nome</Text>
+
+      </TouchableOpacity>
     </View>
-  );
+
+  )
 }
 
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
+  container:{
+    flex:1,
+    backgroundColor: '#f1f1f1',
+    padding: 28,
+
+  },
+  title: {
+    fontSize: 32,
+    color: '#121212',
+    fontWeight: 'bold',
+    textAlign:'center'
+  },
+  button:{
+    backgroundColor: 'blue',
+    height: 40,
     alignItems: 'center',
     justifyContent: 'center',
+    margin: 35 
   },
-});
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold'
+
+  }
+})
+
